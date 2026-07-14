@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Balloon Marches to Christmas Sparkles — Tales From My Suitcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dawn:        #C79465;
+    --market:      #BB805A;
+    --overlook:    #A8724F;
+    --dusk:        #5C4A5E;
+    --night:       #1A2438;
+    --highway:     #59463A;
+    --home:        #F3ECDD;
+
+    --cream:       #FBF4E6;
+    --cream-2:     #F4EAD6;
+    --ink:         #2A2118;
+    --ink-soft:    #4A3E30;
+    --gold:        #F4C95D;
+    --gold-soft:   #E9B94A;
+    --pine:        #3B5D48;
+    --cranberry:   #A23B3B;
+    --line:        rgba(42,33,24,0.14);
+
+    --sky: var(--dawn);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    font-family:"Newsreader", Georgia, serif;
+    color:var(--ink);
+    background-color:var(--sky);
+    transition:background-color 1.6s ease;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    opacity:0.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{ color:inherit; }
+
+  .eyebrow{
+    font-family:"Space Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    opacity:0.75;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:8vh 6vw 10vh;
+    color:#fff8ea;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 50% 110%, rgba(255,220,150,0.18), transparent 60%),
+      radial-gradient(ellipse at 15% -10%, rgba(255,190,120,0.12), transparent 55%);
+    pointer-events:none;
+  }
+  .hero .balloons{
+    font-size:2.6rem;
+    margin-bottom:0.6rem;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,0.25));
+  }
+  .hero h1{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.04;
+    margin:0.2rem 0 1.1rem;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 24px rgba(0,0,0,0.18);
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+  }
+  .hero p.sub{
+    font-family:"Newsreader", serif;
+    font-style:italic;
+    font-size:clamp(1.05rem, 2vw, 1.35rem);
+    max-width:34rem;
+    line-height:1.5;
+    color:#fff3dd;
+    margin:0 0 1.6rem;
+  }
+  .hero .date{
+    font-family:"Space Mono", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#fff3dd;
+    opacity:0.85;
+  }
+
+  /* route svg under hero */
+  .route-wrap{ width:100%; max-width:720px; margin-top:3.2rem; }
+  .route-wrap svg{ width:100%; height:auto; overflow:visible; }
+  .route-line{
+    fill:none; stroke:rgba(255,247,230,0.55); stroke-width:2;
+    stroke-dasharray:6 8; stroke-linecap:round;
+    animation:dash 3.5s linear infinite;
+  }
+  @keyframes dash{ to{ stroke-dashoffset:-140; } }
+  .route-node circle{ fill:#fff8ea; }
+  .route-node text{
+    font-family:"Space Mono", monospace;
+    font-size:10px;
+    fill:#fff3dd;
+    letter-spacing:0.04em;
+  }
+
+  .scrolldown{
+    position:absolute; bottom:2.4rem; left:50%; transform:translateX(-50%);
+    font-family:"Space Mono", monospace; font-size:0.68rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:#fff3dd; opacity:0.7;
+  }
+  .scrolldown::after{
+    content:""; display:block; width:1px; height:26px; margin:0.5rem auto 0;
+    background:linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+  /* ---------- LAYOUT: rail + content ---------- */
+  .story{
+    position:relative;
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:64px minmax(0,1fr);
+    gap:0 2rem;
+    padding:0 6vw;
+  }
+  .rail{
+    position:sticky;
+    top:0;
+    height:100vh;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    padding-top:14vh;
+  }
+  .rail-track{
+    position:relative;
+    width:2px;
+    flex:1;
+    background:linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.35));
+    margin-top:0.4rem;
+  }
+  .rail-stop{
+    position:absolute; left:50%; transform:translate(-50%,-50%);
+    width:11px; height:11px; border-radius:50%;
+    background:rgba(255,255,255,0.35);
+    border:2px solid rgba(255,255,255,0.55);
+    transition:all .5s ease;
+  }
+  .rail-stop.active{
+    background:var(--gold);
+    border-color:var(--gold);
+    box-shadow:0 0 0 5px rgba(244,201,93,0.25), 0 0 16px rgba(244,201,93,0.7);
+  }
+  .rail-label{
+    position:absolute; right:16px; top:50%; transform:translateY(-50%);
+    font-family:"Space Mono", monospace; font-size:0.62rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color:rgba(255,255,255,0.55);
+    white-space:nowrap;
+    text-align:right;
+    transition:color .5s ease;
+  }
+  .rail-stop.active + .rail-label{ color:#fff3dd; }
+
+  main{ min-width:0; }
+
+  section.beat{
+    padding:6.5rem 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  section.beat:last-of-type{ border-bottom:none; }
+
+  .card{
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:22px;
+    padding:clamp(1.8rem, 4vw, 3.4rem);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.45);
+  }
+
+  .kicker{
+    font-family:"Space Mono", monospace;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--cranberry);
+    display:flex; align-items:center; gap:0.6rem;
+    margin-bottom:0.9rem;
+  }
+  .kicker::before{
+    content:""; width:22px; height:1px; background:var(--cranberry);
+  }
+
+  h2{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-size:clamp(1.6rem, 3.4vw, 2.5rem);
+    line-height:1.1;
+    margin:0 0 1rem;
+    letter-spacing:-0.01em;
+  }
+
+  p{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:var(--ink-soft);
+    margin:0 0 1.15rem;
+  }
+  p:last-child{ margin-bottom:0; }
+
+  .lede{
+    font-size:1.24rem;
+    line-height:1.7;
+    color:var(--ink);
+  }
+
+  /* intro (no card, sits on sky) */
+  .intro-beat p{
+    color:#fff3dd;
+    font-size:1.15rem;
+    max-width:38rem;
+  }
+  .intro-beat .lede{ color:#fffaf0; }
+
+  /* stop chips */
+  .stopchip{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:"Space Mono", monospace;
+    font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    background:var(--cream-2);
+    border:1px solid var(--line);
+    padding:0.4rem 0.85rem;
+    border-radius:100px;
+    color:var(--ink-soft);
+    margin-bottom:1.2rem;
+  }
+  .stopchip .dot{ width:6px; height:6px; border-radius:50%; background:var(--market); }
+
+  blockquote{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.15rem, 2.4vw, 1.55rem);
+    line-height:1.55;
+    color:var(--ink);
+    margin:1.6rem 0;
+    padding-left:1.3rem;
+    border-left:3px solid var(--gold-soft);
+  }
+  blockquote cite{
+    display:block;
+    font-family:"Space Mono", monospace;
+    font-style:normal;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:0.7rem;
+  }
+
+  .dusk-quote{ text-align:center; padding:3rem 0; }
+  .dusk-quote blockquote{
+    color:#fff3dd;
+    border-left:none;
+    border-top:3px solid var(--gold-soft);
+    padding-left:0; padding-top:1.4rem;
+    display:inline-block;
+    max-width:32rem;
+  }
+  .dusk-quote cite{ color:#e9d9e6; }
+
+  /* ---------- ARRIVAL / LIGHTING CEREMONY ---------- */
+  .arrival{ position:relative; padding-top:5rem; padding-bottom:7rem; }
+  .arrival .kicker{ color:var(--gold); }
+  .arrival .kicker::before{ background:var(--gold); }
+  .arrival h2, .arrival .lede{ color:#fff8ea; }
+  .arrival p{ color:#e9dcc7; }
+
+  .village-scene{
+    position:relative;
+    width:100%;
+    max-width:680px;
+    margin:0.5rem auto 2.8rem;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -28px rgba(0,0,0,0.6);
+  }
+  .village-scene svg{ display:block; width:100%; height:auto; }
+
+  .star{
+    opacity:0;
+    animation:starfade 4s ease-in-out infinite;
+  }
+  @keyframes starfade{ 0%,100%{ opacity:0.15; } 50%{ opacity:0.85; } }
+
+  .window{ transition:fill 1s ease; }
+  .glowdot{
+    opacity:0;
+    transition:opacity 1s ease;
+  }
+  .village-scene.lit .window{ fill:#F7CE72; }
+  .village-scene.lit .glowdot{
+    opacity:0.9;
+    animation:twinkle 3.4s ease-in-out infinite;
+  }
+  .village-scene.lit #treeLights circle,
+  .village-scene.lit #garlandBulbs circle{
+    opacity:1;
+    animation:twinkle 3s ease-in-out infinite;
+  }
+  #treeLights circle, #garlandBulbs circle{
+    opacity:0;
+    transition:opacity 1s ease;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.65; }
+  }
+
+  .arrival-quote{
+    text-align:center;
+    color:#f6ead0;
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-size:clamp(1.1rem, 2.3vw, 1.4rem);
+    max-width:30rem;
+    margin:2.4rem auto 0;
+    line-height:1.6;
+  }
+
+  /* ---------- HOMEWARD ---------- */
+  .homeward .kicker{ color:var(--gold-soft); }
+  .homeward .kicker::before{ background:var(--gold-soft); }
+  .homeward h2, .homeward p{ color:#fff2df; }
+  .homeward .lede{ color:#fff8ea; }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:var(--home);
+    color:var(--ink);
+    padding:6rem 6vw 2rem;
+    border-radius:32px 32px 0 0;
+    margin-top:2rem;
+  }
+  .closing-inner{ max-width:640px; margin:0 auto; text-align:left; }
+  .closing .kicker{ color:var(--pine); }
+  .closing .kicker::before{ background:var(--pine); }
+  .closing h2{ color:var(--ink); }
+  .closing p{ color:var(--ink-soft); }
+
+  .signoff{
+    margin-top:3rem;
+    padding-top:2rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+  .signoff .mark{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--cranberry);
+  }
+  .signoff a{
+    font-family:"Space Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:0.6rem 1.1rem;
+    border-radius:100px;
+    color:var(--ink-soft);
+    transition:all .25s ease;
+  }
+  .signoff a:hover{ background:var(--ink); color:var(--home); border-color:var(--ink); }
+
+  footer{
+    text-align:center;
+    padding:2.5rem 6vw 3rem;
+    font-family:"Space Mono", monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    background:var(--home);
+  }
+
+  @media (min-width:900px){
+    .rail{ display:flex; }
+  }
+
+  @media (max-width:640px){
+    .hero{ min-height:82vh; padding:6vh 6vw 8vh; }
+    section.beat{ padding:4rem 0; }
+    .card{ border-radius:18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.2s !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body data-sky="dawn">
+<div class="grain"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" data-stop="nyc">
+  <div class="eyebrow">Tales From My Suitcase · Road Journal</div>
+  <div class="balloons">🎈🗽 → 🎄🏘️</div>
+  <h1>From Balloon Marches<br>to <em>Christmas Sparkles</em></h1>
+  <p class="sub">A magical afternoon drive from the city streets alive with Macy's balloons to the cozy glow of Peddler's Village, lighting up for the season.</p>
+  <div class="date">Thanksgiving Day · Boston → NYC → Peddler's Village → Boston</div>
+
+  <div class="route-wrap">
+    <svg viewBox="0 0 700 60" preserveAspectRatio="xMidYMid meet">
+      <path class="route-line" d="M20,30 C 150,10 250,50 350,30 S 550,10 680,30" />
+      <g class="route-node"><circle cx="20" cy="30" r="5"/><text x="20" y="50" text-anchor="middle">NYC</text></g>
+      <g class="route-node"><circle cx="230" cy="34" r="4"/><text x="230" y="16" text-anchor="middle">MARKET</text></g>
+      <g class="route-node"><circle cx="400" cy="24" r="4"/><text x="400" y="50" text-anchor="middle">OVERLOOK</text></g>
+      <g class="route-node"><circle cx="560" cy="20" r="5.5"/><text x="560" y="14" text-anchor="middle">PEDDLER'S VILLAGE</text></g>
+      <g class="route-node"><circle cx="680" cy="30" r="5"/><text x="680" y="50" text-anchor="middle">BOSTON</text></g>
+    </svg>
+  </div>
+
+  <div class="scrolldown">Scroll to follow the drive</div>
+</header>
+
+<!-- ================= STORY ================= -->
+<div class="story">
+  <nav class="rail" aria-hidden="true">
+    <div class="rail-track">
+      <div class="rail-stop" data-for="nyc" style="top:2%"></div>
+      <div class="rail-label" style="top:2%">NYC</div>
+
+      <div class="rail-stop" data-for="market" style="top:24%"></div>
+      <div class="rail-label" style="top:24%">Market</div>
+
+      <div class="rail-stop" data-for="overlook" style="top:42%"></div>
+      <div class="rail-label" style="top:42%">Overlook</div>
+
+      <div class="rail-stop" data-for="arrival" style="top:64%"></div>
+      <div class="rail-label" style="top:64%">Peddler's Village</div>
+
+      <div class="rail-stop" data-for="homeward" style="top:86%"></div>
+      <div class="rail-label" style="top:86%">Boston</div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- INTRO -->
+    <section class="beat intro-beat" data-stop="nyc" data-sky="dawn">
+      <p class="lede">As the last Macy's balloons drifted into the sky and the cheers of the crowd softened, the city still sparkled with leftover holiday magic. Confetti twirled along the streets, the scent of roasted nuts and cocoa lingered, and our hearts buzzed with excitement.</p>
+      <p>Next, we ventured to Peddler's Village — a cozy wonderland where twinkling lights, charming shops, and festive cheer wrapped around every corner, promising an evening straight out of a holiday dream.</p>
+      <p>We hit the road, leaving the skyscrapers behind for winding roads lined with autumn's golden glow. The city's energy transformed into cozy anticipation, each mile bringing us closer to festive charm. The drive was its own little adventure, full of surprises and scenic delights.</p>
+    </section>
+
+    <!-- STOP 1: MARKET -->
+    <section class="beat" data-stop="market" data-sky="market">
+      <div class="card">
+        <div class="stopchip"><span class="dot"></span>Stop 01 · Roadside Market</div>
+        <h2>Pumpkins, cider &amp; cinnamon air</h2>
+        <p>A quaint roadside market caught our eye, its stalls bursting with fresh pumpkins, crisp apples, and jars of homemade cider. The air smelled of baked goods, cinnamon sticks, and cozy spices — totally irresistible.</p>
+        <p>We wandered between baskets of gourds, colorful autumn leaves, and cute decorations, snapping photos and sipping cider while soaking up the fall vibes. Pure autumn magic.</p>
+      </div>
+    </section>
+
+    <!-- STOP 2: OVERLOOK -->
+    <section class="beat" data-stop="overlook" data-sky="overlook">
+      <div class="card">
+        <div class="stopchip"><span class="dot" style="background:var(--overlook)"></span>Stop 02 · The Overlook</div>
+        <h2>A quiet pause, gold on the fields</h2>
+        <p>Further along, a quiet overlook invited us to pause. From this vantage point, the sun draped the rolling fields in golden light, turning every hill and tree into a canvas of warmth. The breeze carried the earthy scent of fallen leaves, and for a few blissful minutes, it felt like we were the only ones in the world.</p>
+        <blockquote>
+          "These plots of cottage-ground, these orchard-tufts, which at this season, with their unripe fruits, are clad in one green hue, and lose themselves 'mid groves and copses."
+          <cite>— as if Wordsworth himself had captured this serene moment</cite>
+        </blockquote>
+        <p>Holiday tunes drifted softly from the car speakers as we rolled along. Quaint towns unfolded like scenes from a storybook, each corner revealing charming houses, rustic barns, and little bridges over sparkling streams. Every twist and turn offered a new delight — sunlight dancing on a pond here, a splash of colorful leaves there — building the perfect anticipation for the festive magic waiting at Peddler's Village.</p>
+      </div>
+    </section>
+
+    <!-- DUSK TRANSITION -->
+    <section class="beat dusk-quote" data-stop="overlook" data-sky="dusk">
+      <blockquote>
+        Arriving at Peddler's Village was like stepping into a storybook.
+        <cite>The turn from afternoon into evening</cite>
+      </blockquote>
+    </section>
+
+    <!-- ARRIVAL / LIGHTING CEREMONY -->
+    <section class="beat arrival" data-stop="arrival" data-sky="night">
+      <div class="kicker">The Christmas Lighting Ceremony</div>
+      <h2 class="lede">And then, almost without noticing, the lights began to turn on.</h2>
+
+      <div class="village-scene" id="villageScene">
+        <svg viewBox="0 0 700 260" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F4EBC9" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#F4EBC9" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F7CE72" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#F7CE72" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0F1A30"/>
+              <stop offset="100%" stop-color="#1A2438"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="700" height="260" fill="url(#skyFade)"/>
+
+          <!-- stars -->
+          <g id="stars" fill="#F4EBC9"></g>
+
+          <!-- moon -->
+          <circle cx="600" cy="46" r="34" fill="url(#moonGlow)"/>
+          <circle cx="600" cy="46" r="14" fill="#F4EBC9" opacity="0.9"/>
+
+          <!-- distant tree line -->
+          <path d="M0,190 L40,160 L70,190 L100,150 L135,190 L170,165 L205,190 L245,155 L280,190 L320,168 L360,190 L700,190 L700,260 L0,260 Z" fill="#0E1830" opacity="0.7"/>
+
+          <!-- village buildings -->
+          <g id="buildings">
+            <!-- house 1 -->
+            <g>
+              <rect x="40" y="150" width="90" height="70" fill="#2A2036"/>
+              <polygon points="35,150 85,110 135,150" fill="#241B30"/>
+              <rect x="58" y="172" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="96" y="172" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="78" y="196" width="16" height="24" fill="#150F1E"/>
+            </g>
+            <!-- house 2, taller -->
+            <g>
+              <rect x="150" y="120" width="100" height="100" fill="#332740"/>
+              <polygon points="144,120 200,72 256,120" fill="#2A2036"/>
+              <rect x="168" y="145" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="212" y="145" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="168" y="180" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="212" y="180" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="190" y="196" width="20" height="24" fill="#150F1E"/>
+            </g>
+            <!-- house 3 -->
+            <g>
+              <rect x="270" y="145" width="85" height="75" fill="#2A2036"/>
+              <polygon points="265,145 312,105 360,145" fill="#241B30"/>
+              <rect x="286" y="168" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="322" y="168" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="304" y="196" width="16" height="24" fill="#150F1E"/>
+            </g>
+            <!-- house 4, wide shop -->
+            <g>
+              <rect x="380" y="135" width="130" height="85" fill="#332740"/>
+              <polygon points="374,135 445,95 516,135" fill="#2A2036"/>
+              <rect x="400" y="158" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="436" y="158" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="472" y="158" width="18" height="18" fill="#191225" class="window"/>
+              <rect x="432" y="196" width="22" height="24" fill="#150F1E"/>
+            </g>
+            <!-- house 5 -->
+            <g>
+              <rect x="530" y="155" width="90" height="65" fill="#2A2036"/>
+              <polygon points="525,155 575,118 625,155" fill="#241B30"/>
+              <rect x="548" y="175" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="586" y="175" width="16" height="16" fill="#191225" class="window"/>
+              <rect x="567" y="200" width="16" height="20" fill="#150F1E"/>
+            </g>
+          </g>
+
+          <!-- illuminated windows (glow toggles on .lit) -->
+          <g id="windowLights">
+            <circle cx="66" cy="180" r="10" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="104" cy="180" r="10" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="177" cy="154" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="221" cy="154" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="177" cy="189" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="221" cy="189" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="294" cy="176" r="10" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="330" cy="176" r="10" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="409" cy="167" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="445" cy="167" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="481" cy="167" r="11" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="556" cy="183" r="10" fill="url(#windowGlow)" class="glowdot"/>
+            <circle cx="594" cy="183" r="10" fill="url(#windowGlow)" class="glowdot"/>
+          </g>
+
+          <!-- lit tree -->
+          <g transform="translate(340,150)">
+            <rect x="-6" y="55" width="12" height="16" fill="#2A2036"/>
+            <polygon points="0,-30 34,50 -34,50" fill="#1E3327"/>
+            <polygon points="0,-10 26,34 -26,34" fill="#25402F"/>
+            <g id="treeLights" fill="#F7CE72"></g>
+          </g>
+
+          <!-- ground snow line -->
+          <path d="M0,220 Q175,205 350,222 T700,218 L700,260 L0,260 Z" fill="#EDE7D6" opacity="0.92"/>
+
+          <!-- garland across the village -->
+          <path id="garlandPath" d="M20,105 C 150,140 250,70 350,100 S 550,145 680,95" fill="none" stroke="rgba(244,235,201,0.15)" stroke-width="1.5"/>
+          <g id="garlandBulbs"></g>
+        </svg>
+      </div>
+
+      <p>As evening settled over Peddler's Village, everything around me seemed to slow down. People grew quieter, the air felt cooler, and then — almost without noticing — the lights began to turn on.</p>
+      <p>I stood there watching as rooftops glowed softly, wreaths shimmered on shop doors, and trees wrapped in tiny lights slowly came into view. It wasn't loud or dramatic. It felt gentle, like the village was easing itself into the season.</p>
+      <p>Carols drifted through the air, familiar and comforting. Children laughed nearby, their excitement impossible not to smile at. I held my cup of hot cocoa a little tighter, letting the warmth sink in, not in a hurry to capture everything on my phone — just wanting to be there.</p>
+      <p>After the morning's rush and spectacle of the parade, this moment felt grounding. Calm. Complete. Standing under those lights, I realized how perfectly the day had unfolded — from the energy of the city to this quiet, glowing village. It felt like the kind of memory I'd come back to long after the season had passed.</p>
+
+      <p class="arrival-quote">"And all at once, summer collapsed into fall."<br>— Oscar Wilde</p>
+    </section>
+
+    <!-- HOMEWARD -->
+    <section class="beat homeward" data-stop="homeward" data-sky="highway">
+      <div class="kicker">As the Journey Turned Homeward</div>
+      <h2 class="lede">Headlights, holiday music, and the skyline coming home</h2>
+      <p>As we pulled away from Peddler's Village, the sparkle of Christmas lights still danced in our mirrors, refusing to fade just yet. The road back to Boston felt alive — holiday music turned up, laughter filling the car, and excited voices replaying favorite moments from the day.</p>
+      <p>Outside, the highway stretched ahead like a ribbon of possibility, dotted with glowing towns and passing headlights. Coffee cups kept us energized, snacks disappeared faster than expected, and every mile carried that happy, post-adventure buzz.</p>
+      <p>When the familiar skyline of Boston finally came into view, it felt less like an ending and more like a perfect encore — bringing us home with hearts still racing, spirits lifted, and the lingering thrill of a holiday journey that truly had it all.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" data-sky="home">
+  <div class="closing-inner">
+    <div class="kicker">Moments That Traveled Home With Us</div>
+    <h2>A perfectly written holiday story</h2>
+    <p>As the day gently came full circle, we realized this journey was about more than just miles traveled — it was about the feeling that followed us from morning to night. From the vibrant chaos of New York City's Macy's Parade — crowds buzzing, balloons soaring, music echoing through the streets — to the soft glow of Christmas lights at Peddler's Village, the day unfolded like a perfectly written holiday story.</p>
+    <p>It reminded us why this season feels so magical. It's joy shared with strangers, traditions passed down and rediscovered, and quiet moments that stay with you long after the lights dim. One moment you're standing shoulder-to-shoulder on bustling city streets, and by evening, you're wandering through a storybook village, cocoa in hand, surrounded by twinkling lights and laughter.</p>
+    <p>If you ever get the chance, spend your Thanksgiving morning in New York and let your evening lead you somewhere cozy and charming, like Peddler's Village. It's a beautiful way to bridge one holiday into the next — where Thanksgiving gratitude gently gives way to Christmas wonder, and memories are made that sparkle just as brightly as the lights themselves.</p>
+
+    <div class="signoff">
+      <div class="mark">Tales From My Suitcase</div>
+      <a href="../index.html">← Back to the road journal</a>
+    </div>
+  </div>
+</section>
+
+<footer>Boston → NYC → Peddler's Village → Boston · Thanksgiving Road Trip</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var sections = document.querySelectorAll('[data-sky]');
+  var railStops = document.querySelectorAll('.rail-stop');
+  var scene = document.getElementById('villageScene');
+
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  // scatter stars across the upper sky
+  var starGroup = document.getElementById('stars');
+  for(var i=0;i<40;i++){
+    var s = document.createElementNS(svgNS,'circle');
+    var sx = Math.random()*700;
+    var sy = Math.random()*110;
+    s.setAttribute('cx', sx.toFixed(1));
+    s.setAttribute('cy', sy.toFixed(1));
+    s.setAttribute('r', (Math.random()*1.1+0.4).toFixed(1));
+    s.classList.add('star');
+    s.style.animationDelay = (Math.random()*4).toFixed(2)+'s';
+    starGroup.appendChild(s);
+  }
+
+  // lights nestled in the tree
+  var treeLights = document.getElementById('treeLights');
+  var treePositions = [
+    [0,-24],[-10,-10],[10,-8],[-18,8],[18,10],[0,4],[-22,26],[22,28],[0,28],[-10,42],[10,44]
+  ];
+  var bulbColors = ['#F7CE72','#F2B84A','#F6D77A','#E9AE3E','#F4C95D'];
+  treePositions.forEach(function(p,i){
+    var c = document.createElementNS(svgNS,'circle');
+    c.setAttribute('cx', p[0]);
+    c.setAttribute('cy', p[1]);
+    c.setAttribute('r', 3);
+    c.setAttribute('fill', bulbColors[i % bulbColors.length]);
+    c.style.animationDelay = (i*0.22)+'s';
+    treeLights.appendChild(c);
+  });
+
+  // garland bulbs following the draped path across the rooftops
+  var garlandPath = document.getElementById('garlandPath');
+  var garlandBulbs = document.getElementById('garlandBulbs');
+  var pathLen = garlandPath.getTotalLength();
+  var bulbCount = 26;
+  for(var g=0; g<bulbCount; g++){
+    var pt = garlandPath.getPointAtLength((g/(bulbCount-1))*pathLen);
+    var b = document.createElementNS(svgNS,'circle');
+    b.setAttribute('cx', pt.x.toFixed(1));
+    b.setAttribute('cy', pt.y.toFixed(1));
+    b.setAttribute('r', 3.2);
+    b.setAttribute('fill', bulbColors[g % bulbColors.length]);
+    b.style.animationDelay = (g*0.15)+'s';
+    garlandBulbs.appendChild(b);
+  }
+
+  var skyColors = {
+    dawn:    '#C79465',
+    market:  '#BB805A',
+    overlook:'#A8724F',
+    dusk:    '#5C4A5E',
+    night:   '#1A2438',
+    highway: '#59463A',
+    home:    '#F3ECDD'
+  };
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var sky = entry.target.getAttribute('data-sky');
+        if(sky && skyColors[sky]){
+          body.style.backgroundColor = skyColors[sky];
+        }
+        var stop = entry.target.getAttribute('data-stop');
+        if(stop){
+          railStops.forEach(function(rs){
+            rs.classList.toggle('active', rs.getAttribute('data-for') === stop);
+          });
+        }
+        if(entry.target.classList.contains('arrival')){
+          scene.classList.add('lit');
+        }
+      }
+    });
+  }, { threshold: 0.45 });
+
+  sections.forEach(function(s){ io.observe(s); });
+})();
+</script>
+
+</body>
+</html>
